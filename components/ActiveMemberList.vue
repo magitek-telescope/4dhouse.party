@@ -1,9 +1,9 @@
 <template lang="html">
   <div class="userlist-wrapper">
     <div class="userlist container">
-      <span class="title">今日の #4dhouse には 3人が滞在しています</span>
+      <span class="title">今日の #4dhouse には {{users.length}} 人が滞在しています</span>
       <ul>
-        <li v-for="user in users"><img :src="`https://github.com/${user.github}.png`" alt="potato4d"></li>
+        <li v-for="user in users"><img :src="`https://github.com/${user.github}.png`" :alt="user.name"></li>
       </ul>
     </div>
   </div>
@@ -27,9 +27,9 @@ export default {
 
 .userlist .title{
   display: block;
-  margin-bottom: 15px;
   font-weight: bold;
-  line-height: 0.8;
+  line-height: 1.0;
+  padding: 15px;
 }
 
 .userlist{

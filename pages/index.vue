@@ -11,7 +11,7 @@
       </div>
     </header>
 
-    <UserList :users="activeUsers" />
+    <ActiveMemberList :users="users.filter((u)=>u.active)" />
 
     <section class="main container">
       <div class="main-content">
@@ -23,17 +23,14 @@
           <span>宿泊スケジュール</span>
         </h2>
 
+        <Schedule :users="users" />
+
       </div>
       <div class="sub-content">
         <h2 class="section-title">
           <span>Members</span>
         </h2>
-        <ul class="members-list">
-          <li v-for="user in users" class="member">
-            <img :src="`https://github.com/${user.github}.png`" alt="potato4d" width="40">
-            <span>{{user.name}}</span>
-          </li>
-        </ul>
+        <Members :users="users" />
       </div>
     </section>
   </div>
@@ -41,26 +38,24 @@
 
 <script>
 import Logo from '~/components/Logo.vue'
-import UserList from '~/components/UserList.vue'
+
+import Members from '~/components/Members.vue'
+import Schedule from '~/components/Schedule.vue'
+import ActiveMemberList from '~/components/ActiveMemberList.vue'
 
 export default {
   components: {
     Logo,
-    UserList
+    Members,
+    Schedule,
+    ActiveMemberList
   },
   data () {
     return {
-      activeUsers: [
-        { name: 'potato4d', github: 'potato4d' },
-        { name: 'potato4d', github: 'potato4d' },
-        { name: 'potato4d', github: 'potato4d' }
-      ],
       users: [
-        { name: 'potato4d', github: 'potato4d' },
-        { name: 'potato4d', github: 'potato4d' },
-        { name: 'potato4d', github: 'potato4d' },
-        { name: 'potato4d', github: 'potato4d' },
-        { name: 'potato4d', github: 'potato4d' }
+        { name: 'potato4d', github: 'potato4d', active: true },
+        { name: 'nametaketakewo', github: 'nametaketakewo', active: false },
+        { name: 'lightnet328', github: 'lightnet328', active: true }
       ]
     }
   }
@@ -151,30 +146,20 @@ header .userinfo .icon{
   background: #F8F8FA;
 }
 
-.members-list{
-  margin: 15px 0 0;
-  padding: 0;
-  list-style: none;
-}
+@media (max-width: 960px) {
+  .main.container{
+    width: 100%;
+    flex-direction: column;
+  }
 
-.members-list .member{
-  width: 100%;
-  height: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  font-size: 16px;
-  color: #666;
-  font-weight: bold;
-}
+  .main .main-content,
+  .main .sub-content{
+    width: 100%;
+  }
 
-.members-list .member img{
-  border-radius: 50%;
-  overflow: hidden;
-  margin-right: 15px;
-}
-
-.members-list .member + .member{
-  margin-top: 15px;
+  iframe{
+    width: 100%;
+    height: auto;
+  }
 }
 </style>

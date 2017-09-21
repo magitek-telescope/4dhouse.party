@@ -22,6 +22,7 @@ html, body, #wrapper{
   min-height: 100vh;
   margin: 0;
   padding: 0;
+  overflow: hidden;
 }
 
 *, *:before, *:after {
@@ -35,6 +36,11 @@ html, body, #wrapper{
 
 .container{
   width: 960px;
+  max-width: 100%;
   margin: 0 auto;
+}
+
+img {
+  background: #fff;
 }
 </style>
