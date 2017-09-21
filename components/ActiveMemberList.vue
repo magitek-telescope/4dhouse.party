@@ -18,7 +18,7 @@ export default {
 <style scoped>
 .userlist-wrapper {
   width: 100%;
-  height: 100px;
+  min-height: 100px;
   color: #FFFFFF;
   font-size: 16px;
   background: #444449;
@@ -41,7 +41,7 @@ export default {
 }
 
 .userlist ul {
-  padding: 0;
+  padding: 0 0 15px;
   margin: 0;
   list-style: none;
   display: flex;
